@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>회사소개 — 클래스로</title>
+  <meta name="description" content="클래스로는 동네 공방·작업실의 원데이 클래스를 앱에서 찾고 바로 예약·결제하는 서비스입니다.">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/pages/about.css">
+  <script src="components/header/header.js" defer></script>
+  <script src="components/footer/footer.js" defer></script>
+  <script src="js/pages/about.js" defer></script>
+</head>
+<body class="about-page">
+  <site-header></site-header>
+
+  <main>
+    <!-- 소개 -->
+    <section class="about-hero">
+      <div class="container about-hero__inner">
+        <div class="about-hero__text">
+          <p class="about-overline">About Classro</p>
+          <h1 class="about-hero__title">동네 공방과 사람을<br>잇습니다.</h1>
+          <p class="about-hero__lead">클래스로는 동네 공방·작업실의 원데이 클래스를 앱에서 찾고, 바로 예약·결제하는 서비스입니다.</p>
+          <div class="about-hero__actions">
+            <a href="./booking.html" class="btn btn--secondary">클래스 보기</a>
+          </div>
+        </div>
+        <figure class="about-photo about-hero__photo">
+          <img src="assets/about/hero-pottery-class.webp" width="800" height="800" alt="물레 위에서 아이와 함께 그릇을 빚는 손" fetchpriority="high">
+          <figcaption class="about-photo__caption">Pottery</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 숫자 -->
+    <section class="about-section" aria-labelledby="about-numbers-title" data-reveal>
+      <div class="container">
+        <header class="about-section-head">
+          <p class="about-overline">Numbers</p>
+          <h2 id="about-numbers-title" class="about-section-head__title">숫자로 보는 클래스로</h2>
+        </header>
+        <dl class="about-stats">
+          <div class="about-stat">
+            <dt class="about-stat__label">설립 · 3월</dt>
+            <dd class="about-stat__value"><span class="about-stat__num">2023</span><span class="about-stat__unit">년</span></dd>
+          </div>
+          <div class="about-stat">
+            <dt class="about-stat__label">제휴 공방</dt>
+            <dd class="about-stat__value"><span class="about-stat__unit">약</span><span class="about-stat__num">420</span><span class="about-stat__unit">곳</span></dd>
+          </div>
+          <div class="about-stat">
+            <dt class="about-stat__label">월 예약 · 2026.09 기준</dt>
+            <dd class="about-stat__value"><span class="about-stat__unit">약</span><span class="about-stat__num">7천</span><span class="about-stat__unit">건</span></dd>
+          </div>
+          <div class="about-stat">
+            <dt class="about-stat__label">함께 일하는 사람</dt>
+            <dd class="about-stat__value"><span class="about-stat__num">30</span><span class="about-stat__unit">명</span></dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 클래스 분야 -->
+    <section class="about-section" aria-labelledby="about-classes-title" data-reveal>
+      <div class="container">
+        <header class="about-section-head">
+          <p class="about-overline">Classes</p>
+          <h2 id="about-classes-title" class="about-section-head__title">여섯 가지 손의 시간</h2>
+          <p class="about-section-head__desc">흙을 빚고, 반죽을 치대고, 가죽을 꿰매는 하루. 가까운 공방에서 만날 수 있습니다.</p>
+        </header>
+        <ul class="about-categories">
+          <li class="about-category">
+            <figure class="about-photo">
+              <img src="assets/about/category-pottery.webp" width="800" height="800" alt="돌아가는 물레 위에서 흙을 빚는 손" loading="lazy">
+              <figcaption class="about-photo__caption">Pottery</figcaption>
+            </figure>
+            <p class="about-category__name">도자기</p>
+          </li>
+          <li class="about-category">
+            <figure class="about-photo">
+              <img src="assets/about/category-baking.webp" width="800" height="800" alt="밀가루를 뿌린 나무 판 위에서 반죽을 치대는 손" loading="lazy">
+              <figcaption class="about-photo__caption">Baking</figcaption>
+            </figure>
+            <p class="about-category__name">베이킹</p>
+          </li>
+          <li class="about-category">
+            <figure class="about-photo">
+              <img src="assets/about/category-leather.webp" width="800" height="800" alt="커팅 매트 위에서 재단 중인 가죽 조각" loading="lazy">
+              <figcaption class="about-photo__caption">Leather</figcaption>
+            </figure>
+            <p class="about-category__name">가죽공예</p>
+          </li>
+          <li class="about-category">
+            <figure class="about-photo">
+              <img src="assets/about/category-flower.webp" width="800" height="800" alt="리본으로 묶은 작은 꽃다발들" loading="lazy">
+              <figcaption class="about-photo__caption">Flower</figcaption>
+            </figure>
+            <p class="about-category__name">플라워</p>
+          </li>
+          <li class="about-category">
+            <figure class="about-photo">
+              <img src="assets/about/category-drawing.webp" width="800" height="800" alt="스케치북에 붓으로 그림을 그리는 손" loading="lazy">
+              <figcaption class="about-photo__caption">Drawing</figcaption>
+            </figure>
+            <p class="about-category__name">드로잉</p>
+          </li>
+          <li class="about-category">
+            <figure class="about-photo">
+              <img src="assets/about/category-perfume.webp" width="800" height="800" alt="펼친 책 옆에 놓인 여러 향수병" loading="lazy">
+              <figcaption class="about-photo__caption">Perfume</figcaption>
+            </figure>
+            <p class="about-category__name">향수</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 이용 방법 -->
+    <section class="about-section" aria-labelledby="about-how-title" data-reveal>
+      <div class="container">
+        <header class="about-section-head">
+          <p class="about-overline">How it works</p>
+          <h2 id="about-how-title" class="about-section-head__title">고르고, 정하고, 만나요.</h2>
+        </header>
+        <ol class="about-steps">
+          <li class="about-step">
+            <span class="about-icon about-icon--search" aria-hidden="true"></span>
+            <p class="about-step__count">01 / 03</p>
+            <h3 class="about-step__title">고르고</h3>
+            <p class="about-step__desc">분야와 지역으로 동네 공방의 원데이 클래스를 찾아봅니다.</p>
+          </li>
+          <li class="about-step">
+            <span class="about-icon about-icon--calendar" aria-hidden="true"></span>
+            <p class="about-step__count">02 / 03</p>
+            <h3 class="about-step__title">정하고</h3>
+            <p class="about-step__desc">날짜와 인원을 고르고, 앱에서 바로 결제합니다.</p>
+          </li>
+          <li class="about-step">
+            <span class="about-icon about-icon--pin" aria-hidden="true"></span>
+            <p class="about-step__count">03 / 03</p>
+            <h3 class="about-step__title">만나요</h3>
+            <p class="about-step__desc">예약한 시간, 공방에서 직접 만들어 봅니다.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 회사 정보 · 팀 -->
+    <section class="about-section" aria-labelledby="about-company-title" data-reveal>
+      <div class="container">
+        <header class="about-section-head">
+          <p class="about-overline">Company</p>
+          <h2 id="about-company-title" class="about-section-head__title">회사 정보</h2>
+        </header>
+        <div class="about-company">
+          <dl class="about-info">
+            <div class="about-info__row">
+              <dt>회사명</dt>
+              <dd>클래스로(Classro)</dd>
+            </div>
+            <div class="about-info__row">
+              <dt>대표</dt>
+              <dd>한서윤</dd>
+            </div>
+            <div class="about-info__row">
+              <dt>설립</dt>
+              <dd>2023년 3월</dd>
+            </div>
+            <div class="about-info__row">
+              <dt>서비스</dt>
+              <dd>iOS·Android 앱, 모바일 웹</dd>
+            </div>
+            <div class="about-info__row">
+              <dt>클래스 분야</dt>
+              <dd>도자기, 베이킹, 가죽공예, 플라워, 드로잉, 향수</dd>
+            </div>
+          </dl>
+
+          <div class="about-team">
+            <h3 class="about-team__title">30명이 함께 만듭니다</h3>
+            <dl class="about-team__list">
+              <div class="about-team__row"><dt>개발</dt><dd>11명</dd></div>
+              <div class="about-team__row"><dt>디자인</dt><dd>4명</dd></div>
+              <div class="about-team__row"><dt>PO</dt><dd>3명</dd></div>
+              <div class="about-team__row"><dt>마케팅</dt><dd>5명</dd></div>
+              <div class="about-team__row"><dt>운영·CS</dt><dd>5명</dd></div>
+              <div class="about-team__row"><dt>경영지원</dt><dd>2명</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 하단 CTA -->
+    <section class="about-cta" aria-labelledby="about-cta-title" data-reveal>
+      <div class="container about-cta__inner">
+        <h2 id="about-cta-title" class="about-cta__title">가까운 공방, 바로 예약.</h2>
+        <p class="about-cta__desc">오늘 마음에 드는 클래스를 찾아보세요.</p>
+        <div class="about-cta__actions">
+          <a href="./booking.html" class="btn btn--primary btn--lg">예약하기 <span aria-hidden="true">→</span></a>
+          <a href="./qna.html" class="btn btn--secondary btn--lg">자주 묻는 질문</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <site-footer></site-footer>
+</body>
+</html>
