@@ -1,7 +1,7 @@
 /* 오시는 길 페이지 전용 (DESIGN.md 8-4, 8-6, 8-8, 8-15, 8-16) */
 
 .location-page {
-  padding-top: var(--space-8);
+  padding-top: var(--space-6);
   padding-bottom: var(--section-gap);
 }
 
@@ -33,9 +33,24 @@
   color: var(--text-secondary);
 }
 
-.location-page__map-section,
 .location-page__transit {
   margin-top: var(--space-7);
+}
+
+/* 모바일: 주소·버튼이 지도보다 먼저 보이도록 / 데스크톱: 2열 */
+.location-page__map-section {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-6);
+}
+.location-page__map-section .location-address { order: -1; margin-top: 0; }
+@media (min-width: 768px) {
+  .location-page__map-section {
+    grid-template-columns: 7fr 5fr;
+    gap: var(--grid-gap);
+    align-items: stretch;
+  }
+  .location-page__map-section .location-address { order: 0; }
 }
 
 /* 지도 블록: 위에 글자 없음, 마커만 */
@@ -43,7 +58,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
+  max-height: 280px;
+  width: 100%;
   border: var(--border-width) solid var(--border-default);
   border-radius: var(--radius-lg);
   background: var(--color-tan-100);
@@ -51,14 +68,14 @@
 }
 
 @media (min-width: 768px) {
-  .location-map { aspect-ratio: 16 / 9; }
+  .location-map { aspect-ratio: auto; height: 100%; min-height: 240px; max-height: 320px; }
 }
 
 /* 주소 + 지도 버튼 */
 .location-address {
   display: grid;
   gap: var(--space-5);
-  margin-top: var(--space-5);
+  align-content: center;
 }
 
 .location-address__label {
@@ -99,16 +116,6 @@
 }
 .location-btn--secondary:hover { background: var(--bg-subtle); }
 
-@media (min-width: 768px) {
-  .location-address {
-    grid-template-columns: 1fr auto;
-    align-items: end;
-  }
-  .location-address__actions {
-    grid-auto-flow: column;
-    gap: var(--space-3);
-  }
-}
 
 /* 섹션 제목 */
 .location-section-head { margin-bottom: var(--space-6); }
