@@ -1,0 +1,112 @@
+/* Q&A 페이지 전용 — 토큰은 common.css(DESIGN.md 12장) 것만 사용 */
+
+.qna-page {
+  padding-top: var(--space-8);
+  padding-bottom: var(--section-gap);
+  /* 한글이 단어 중간에서 줄바꿈되지 않게 */
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* ---------- 페이지 제목 (DESIGN.md 8-4) ---------- */
+.qna-intro { margin-bottom: var(--space-7); }
+
+.qna-intro__overline {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-accent);
+}
+
+.qna-intro__title {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.qna-intro__lead {
+  max-width: 640px;
+  margin: 0;
+  font-size: var(--text-body-lg);
+  letter-spacing: -0.005em;
+  color: var(--text-secondary);
+}
+
+/* ---------- 질문 묶음 ---------- */
+.qna-group + .qna-group { margin-top: var(--space-7); }
+
+.qna-group__title {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* 데스크톱: 묶음 제목 왼쪽 4칸, 질문 목록 오른쪽 8칸 */
+@media (min-width: 1024px) {
+  .qna-intro { margin-bottom: var(--space-9); }
+
+  .qna-group {
+    display: grid;
+    grid-template-columns: 4fr 8fr;
+    gap: var(--grid-gap);
+    align-items: start;
+  }
+  .qna-group + .qna-group { margin-top: var(--space-8); }
+  .qna-group__title { margin: 0; padding-top: var(--space-4); }
+}
+
+/* ---------- 아코디언 (DESIGN.md 8-12) ---------- */
+.qna-list { border-bottom: var(--border-width) solid var(--border-default); }
+
+.qna-item { border-top: var(--border-width) solid var(--border-default); }
+
+.qna-item__heading { margin: 0; }
+
+.qna-item__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  width: 100%;
+  min-height: 64px;
+  padding: var(--space-4) 0;
+  border: 0;
+  background: none;
+  color: var(--text-primary);
+  font: 600 var(--text-body-lg)/1.5 var(--font-sans);
+  letter-spacing: -0.005em;
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+.qna-item__question:hover { color: var(--text-accent); }
+
+.qna-item__icon {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--accent);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+/* 열리면 + 를 45° 돌려 × 로 */
+.qna-item__question[aria-expanded="true"] .qna-item__icon { transform: rotate(45deg); }
+
+.qna-item__answer {
+  max-width: 640px;
+  padding-bottom: var(--space-5);
+  color: var(--text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+.qna-item__answer:not([hidden]) { animation: qna-answer-in var(--duration-base) var(--ease-out); }
+.qna-item__answer p { margin: 0; }
+
+@keyframes qna-answer-in {
+  from { opacity: 0; transform: translateY(-4px); }
+}
