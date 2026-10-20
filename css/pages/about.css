@@ -1,0 +1,353 @@
+/* 회사소개 페이지 — 모든 규칙은 .about-page 범위 안에서만 */
+
+/* ---------- 공통 CSS에 없는 버튼 (DESIGN.md 8-1) ---------- */
+/* TODO: common.css에 추가되면 이 블록 삭제 */
+.about-page .btn--secondary {
+  background: transparent;
+  color: var(--color-ink-900);
+  border: var(--border-width) solid var(--color-ink-900);
+}
+.about-page .btn--secondary:hover { background: var(--color-tan-100); }
+.about-page .btn--lg {
+  height: 56px;
+  padding: 0 28px;
+  font-size: 16px;
+}
+
+/* ---------- 섹션 공통 ---------- */
+.about-page .about-section {
+  padding: var(--section-gap) 0;
+  border-top: var(--border-width) solid var(--border-default);
+}
+
+/* 섹션 제목 (DESIGN.md 8-4) */
+.about-page .about-overline {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  color: var(--text-accent);
+}
+
+.about-page .about-section-head {
+  margin-bottom: var(--space-6);
+}
+.about-page .about-section-head__title {
+  margin: 0;
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.about-page .about-section-head__desc {
+  max-width: 640px;
+  margin: var(--space-4) 0 0;
+  font-size: var(--text-body-lg);
+  line-height: 1.65;
+  letter-spacing: -0.005em;
+  color: var(--text-secondary);
+}
+
+@media (min-width: 1024px) {
+  .about-page .about-section-head { margin-bottom: var(--space-7); }
+}
+
+/* ---------- 사진 (DESIGN.md 6장) ---------- */
+.about-page .about-photo {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-tan-100);
+}
+.about-page .about-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* 캡션 대비용 아래쪽 그라데이션 */
+.about-page .about-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(24, 20, 10, 0.55), transparent 50%);
+  pointer-events: none;
+}
+.about-page .about-photo__caption {
+  position: absolute;
+  left: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 1;
+  font-size: var(--text-caption);
+  font-weight: 500;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  color: var(--color-white);
+}
+
+/* ---------- 소개 (Hero) ---------- */
+.about-page .about-hero {
+  padding: var(--space-8) 0;
+}
+.about-page .about-hero__inner {
+  display: grid;
+  gap: var(--space-6);
+}
+.about-page .about-hero__title {
+  margin: 0;
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+.about-page .about-hero__lead {
+  max-width: 640px;
+  margin: var(--space-5) 0 0;
+  font-size: var(--text-body-lg);
+  line-height: 1.65;
+  letter-spacing: -0.005em;
+  color: var(--text-secondary);
+}
+.about-page .about-hero__actions {
+  margin-top: var(--space-6);
+}
+.about-page .about-hero__photo {
+  border-radius: var(--radius-lg);
+}
+
+@media (min-width: 768px) {
+  .about-page .about-hero { padding: var(--space-9) 0; }
+}
+@media (min-width: 1024px) {
+  .about-page .about-hero__inner {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: var(--space-7);
+  }
+}
+
+/* ---------- 숫자 (DESIGN.md 8-17) ---------- */
+.about-page .about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0;
+  border-top: var(--border-width) solid var(--border-default);
+}
+.about-page .about-stat {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: flex-end; /* column-reverse에서 위쪽 정렬 */
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-4);
+  border-bottom: var(--border-width) solid var(--border-default);
+}
+/* 모바일 2열: 오른쪽 칸 앞에 세로 구분선 */
+.about-page .about-stat:nth-child(even) {
+  border-left: var(--border-width) solid var(--border-default);
+}
+.about-page .about-stat__label {
+  font-size: var(--text-small);
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+.about-page .about-stat__value {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.about-page .about-stat__num {
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+.about-page .about-stat__unit {
+  font-size: var(--text-h3);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+@media (min-width: 1024px) {
+  .about-page .about-stats {
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 0;
+  }
+  .about-page .about-stat {
+    padding: var(--space-2) var(--space-6);
+    border-bottom: 0;
+  }
+  .about-page .about-stat:first-child { padding-left: 0; }
+  .about-page .about-stat + .about-stat {
+    border-left: var(--border-width) solid var(--border-default);
+  }
+}
+
+/* ---------- 클래스 분야 ---------- */
+.about-page .about-categories {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6) var(--grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.about-page .about-category__name {
+  margin: var(--space-3) 0 0;
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 768px) {
+  .about-page .about-categories { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ---------- 이용 방법 (DESIGN.md 8-6 정보 카드) ---------- */
+.about-page .about-steps {
+  display: grid;
+  gap: var(--grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.about-page .about-step {
+  padding: var(--space-5);
+  background: var(--bg-surface);
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-md);
+}
+.about-page .about-step__count {
+  margin: var(--space-4) 0 var(--space-1);
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-secondary);
+}
+.about-page .about-step__title {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+.about-page .about-step__desc {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+@media (min-width: 768px) {
+  .about-page .about-steps { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* 아이콘: assets/icons의 SVG를 마스크로 써서 색은 토큰으로 */
+.about-page .about-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-color: var(--accent);
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+.about-page .about-icon--search { --icon: url("../../assets/icons/search.svg"); }
+.about-page .about-icon--calendar { --icon: url("../../assets/icons/calendar-check.svg"); }
+.about-page .about-icon--pin { --icon: url("../../assets/icons/map-pin.svg"); }
+
+/* ---------- 회사 정보 · 팀 ---------- */
+.about-page .about-company {
+  display: grid;
+  gap: var(--space-7);
+}
+.about-page .about-info,
+.about-page .about-team__list {
+  margin: 0;
+  border-top: var(--border-width) solid var(--border-strong);
+}
+.about-page .about-info__row,
+.about-page .about-team__row {
+  display: flex;
+  gap: var(--space-4);
+  padding: var(--space-4) 0;
+  border-bottom: var(--border-width) solid var(--border-default);
+}
+.about-page .about-info dt {
+  flex: 0 0 96px;
+  font-size: var(--text-small);
+  font-weight: 500;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.about-page .about-info dd,
+.about-page .about-team__row dd {
+  margin: 0;
+}
+
+.about-page .about-team__title {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+.about-page .about-team__row {
+  justify-content: space-between;
+}
+.about-page .about-team__row dd {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (min-width: 1024px) {
+  .about-page .about-company {
+    grid-template-columns: 3fr 2fr;
+    gap: var(--space-10);
+  }
+  /* 왼쪽 표와 윗선 높이 맞춤 */
+  .about-page .about-info { margin-top: calc(var(--text-h3) * 1.35 + var(--space-4)); }
+}
+
+/* ---------- 하단 CTA (다크 섹션은 푸터 하나라 밝은 면 사용) ---------- */
+.about-page .about-cta {
+  padding: var(--section-gap) 0;
+  background: var(--bg-subtle);
+  text-align: center;
+}
+.about-page .about-cta__title {
+  margin: 0;
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+.about-page .about-cta__desc {
+  margin: var(--space-4) 0 0;
+  font-size: var(--text-body-lg);
+  color: var(--text-secondary);
+}
+.about-page .about-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+/* ---------- 스크롤 등장 (DESIGN.md 9장) ---------- */
+/* about.js가 붙이는 클래스. JS가 없으면 그대로 보임 */
+.about-page.is-reveal-ready [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out);
+}
+.about-page.is-reveal-ready [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
