@@ -1,0 +1,401 @@
+/* 홈(index.html) 전용. 공통 파일은 수정하지 않고 .home-page 범위에서만 정의 */
+
+/* ---------- 공통 버튼에 없는 크기 (DESIGN.md 8-1) ---------- */
+.home-page .btn--lg { height: 56px; padding: 0 28px; font-size: var(--text-body); }
+
+/* 버튼 화살표가 hover 때 살짝 밀려남 */
+.home-btn-arrow span { transition: transform var(--duration-fast) var(--ease-out); }
+.home-btn-arrow:hover span { transform: translateX(4px); }
+
+/* ---------- 스크롤 등장 (DESIGN.md 9장: 16px 위로 + 투명도, 한 번만) ---------- */
+.js .home-page [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--duration-slow) var(--ease-out), transform var(--duration-slow) var(--ease-out);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js .home-page [data-reveal].is-visible { opacity: 1; transform: none; }
+
+/* ---------- 공통 글자 스타일 ---------- */
+.home-overline {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-accent);
+}
+
+/* 사진 위 캡션 (DESIGN.md 6장) */
+.home-caption {
+  position: absolute;
+  left: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 1;
+  font-size: var(--text-caption);
+  font-weight: 500;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-white);
+}
+
+/* ---------- 섹션 공통 (DESIGN.md 8-4) ---------- */
+.home-section { padding: var(--section-gap) 0; border-top: var(--border-width) solid var(--border-default); }
+
+.home-section__head { margin-bottom: var(--space-6); }
+@media (min-width: 1024px) {
+  .home-section__head { margin-bottom: var(--space-7); }
+}
+
+.home-section__title {
+  margin: 0;
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.home-section__desc {
+  max-width: 640px;
+  margin: var(--space-4) 0 0;
+  font-size: var(--text-body-lg);
+  color: var(--text-secondary);
+}
+
+/* ---------- 히어로: 글 + 사진 나란히 ---------- */
+.home-hero { padding: var(--space-6) 0 var(--section-gap); }
+
+.home-hero__grid {
+  display: grid;
+  gap: var(--space-7);
+}
+@media (min-width: 1024px) {
+  .home-hero__grid {
+    grid-template-columns: 5fr 7fr;
+    align-items: center;
+    gap: var(--space-8);
+    min-height: calc(100vh - var(--header-height) - var(--space-6));
+  }
+}
+
+.home-hero__title {
+  margin: 0;
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+
+.home-hero__lead {
+  margin: var(--space-5) 0 var(--space-6);
+  font-size: var(--text-body-lg);
+  color: var(--text-secondary);
+}
+
+/* 큰 사진(4:5) + 겹쳐 놓은 작은 사진(1:1) */
+.home-hero__visual {
+  position: relative;
+  padding-bottom: var(--space-7);
+}
+@media (min-width: 768px) {
+  .home-hero__visual { padding-left: 20%; }
+}
+
+.home-hero__main,
+.home-hero__sub {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: var(--color-tan-100);
+}
+.home-hero__main { aspect-ratio: 4 / 5; border-radius: var(--radius-lg); }
+.home-hero__sub {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-md);
+  border: 6px solid var(--bg-page);
+}
+
+.home-hero__main::after,
+.home-hero__sub::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(24, 20, 10, .55), transparent 50%);
+}
+
+.home-hero__main img,
+.home-hero__sub img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- 소개 ---------- */
+.home-intro__title {
+  margin: 0 0 var(--space-5);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+.home-intro__text {
+  max-width: 640px;
+  margin: 0;
+  font-size: var(--text-body-lg);
+  color: var(--text-secondary);
+}
+@media (min-width: 1024px) {
+  .home-intro { display: grid; grid-template-columns: 1fr 1fr; column-gap: var(--grid-gap); align-items: end; }
+  .home-intro .home-overline { grid-column: 1 / -1; }
+  .home-intro__title { margin: 0; }
+}
+
+/* ---------- 카테고리: 이름 목록 + 사진 (사진 4:5, DESIGN.md 6장) ---------- */
+.home-showcase {
+  display: grid;
+  gap: var(--space-6);
+}
+@media (min-width: 768px) {
+  .home-showcase { grid-template-columns: 5fr 7fr; align-items: start; gap: var(--space-7); }
+  .home-showcase__photo { position: sticky; top: calc(var(--header-height) + var(--space-5)); }
+}
+
+.home-showcase__photo {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--color-tan-100);
+}
+.home-showcase__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(24, 20, 10, .55), transparent 50%);
+}
+.home-showcase__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity var(--duration-base) var(--ease-out), transform var(--duration-slow) var(--ease-out);
+}
+.home-showcase__photo img.is-changing { opacity: 0; transform: scale(1.03); }
+
+.home-showcase__counter {
+  position: absolute;
+  right: var(--space-4);
+  bottom: var(--space-4);
+  z-index: 1;
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-white);
+}
+
+.home-showcase__list { margin: 0; padding: 0; list-style: none; border-top: var(--border-width) solid var(--border-default); }
+.home-showcase__list li { border-bottom: var(--border-width) solid var(--border-default); }
+
+.home-showcase__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: var(--space-4);
+  align-items: baseline;
+  width: 100%;
+  min-height: 64px;
+  padding: var(--space-4) 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--color-gray-700);
+  text-align: left;
+  cursor: pointer;
+  transition: color var(--duration-fast) var(--ease-out), padding var(--duration-base) var(--ease-out);
+}
+.home-showcase__item:hover,
+.home-showcase__item[aria-pressed="true"] { color: var(--text-primary); }
+.home-showcase__item[aria-pressed="true"] { padding-left: var(--space-3); }
+
+.home-showcase__num {
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+  color: var(--text-accent);
+}
+
+.home-showcase__name {
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+/* 설명은 선택된 항목에서만 펼쳐짐 */
+.home-showcase__desc {
+  grid-column: 2;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+  transition: max-height var(--duration-base) var(--ease-out), opacity var(--duration-base) var(--ease-out), margin var(--duration-base) var(--ease-out);
+}
+.home-showcase__item[aria-pressed="true"] .home-showcase__desc { max-height: 3em; opacity: 1; margin-top: var(--space-2); }
+
+/* ---------- 패럴랙스 사진 띠 ---------- */
+.home-band {
+  position: relative;
+  height: 70vh;
+  min-height: 360px;
+  overflow: hidden;
+  background: var(--color-tan-100);
+}
+/* 사진을 띠보다 크게 두고 JS가 위아래로 옮김 → 창문 너머로 보이는 느낌 */
+.home-band__img {
+  position: absolute;
+  left: 0;
+  top: -20%;
+  width: 100%;
+  height: 140%;
+  object-fit: cover;
+}
+.home-band::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(24, 20, 10, .55), transparent 60%);
+}
+.home-band__text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: var(--space-7);
+  z-index: 1;
+  color: var(--color-white);
+}
+.home-band__caption {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.home-band__title {
+  margin: 0;
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+/* ---------- 이용 방법 (정보 카드, DESIGN.md 8-6) ---------- */
+.home-steps {
+  display: grid;
+  gap: var(--grid-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+@media (min-width: 768px) {
+  .home-steps { grid-template-columns: repeat(3, 1fr); }
+}
+
+.home-steps__item {
+  padding: var(--space-5);
+  background: var(--bg-surface);
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-md);
+  transition: border-color var(--duration-fast) var(--ease-out);
+}
+.home-steps__item:hover { border-color: var(--border-strong); }
+
+.home-steps__num {
+  font-size: var(--text-small);
+  color: var(--text-accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.home-steps__title {
+  margin: var(--space-3) 0 var(--space-2);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.home-steps__desc { margin: 0; color: var(--text-secondary); }
+
+/* ---------- 숫자 강조 (DESIGN.md 8-17) ---------- */
+.home-stat {
+  display: grid;
+  gap: var(--space-6);
+  margin: 0;
+}
+@media (min-width: 768px) {
+  .home-stat { grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .home-stat__item + .home-stat__item {
+    padding-left: var(--space-6);
+    border-left: var(--border-width) solid var(--border-default);
+  }
+}
+
+.home-stat__item { display: flex; flex-direction: column-reverse; }
+
+.home-stat__value {
+  margin: 0;
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+
+.home-stat__unit {
+  margin-left: var(--space-1);
+  font-size: var(--text-h3);
+  font-weight: 500;
+}
+
+.home-stat__label {
+  margin-top: var(--space-2);
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+}
+
+/* ---------- 마지막 예약 유도 (다크 섹션은 푸터가 쓰므로 옅은 배경) ---------- */
+.home-cta { background: var(--bg-subtle); text-align: center; }
+.home-cta__title {
+  margin: 0 0 var(--space-6);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+/* ---------- 모바일 하단 고정 예약 바 (DESIGN.md 8-1) ---------- */
+.home-sticky-cta { display: none; }
+@media (max-width: 767px) {
+  .home-sticky-cta {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 90;
+    padding: var(--space-3) var(--container-padding);
+    background: var(--color-white);
+    border-top: var(--border-width) solid var(--border-default);
+    box-shadow: var(--shadow-md);
+    transform: translateY(100%);
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+  .home-sticky-cta.is-shown { transform: none; }
+  .home-sticky-cta .btn { width: 100%; }
+}
+
+
