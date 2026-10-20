@@ -1,0 +1,405 @@
+/* 클래스 예약 페이지 — 모든 규칙은 .booking-page 범위 안에서만 */
+
+/* ---------- 공통에 없는 버튼 변형 (DESIGN.md 8-1) ---------- */
+.booking-page .btn--lg { height: 56px; padding: 0 28px; font-size: 16px; }
+.booking-page .btn--secondary {
+  background: transparent;
+  color: var(--text-primary);
+  border: var(--border-width) solid var(--border-strong);
+}
+.booking-page .btn--secondary:hover { background: var(--bg-subtle); }
+.booking-page .btn:disabled {
+  background: var(--color-gray-300);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---------- 레이아웃 ---------- */
+.booking-page .booking { padding-top: var(--space-8); padding-bottom: var(--section-gap); }
+
+.booking-page .booking__intro { margin-bottom: var(--space-6); max-width: 640px; }
+.booking-page .booking__overline,
+.booking-page .booking-step__count {
+  margin: 0 0 var(--space-2);
+  color: var(--text-accent);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.booking-page .booking__title {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+.booking-page .booking__lead {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--text-body-lg);
+  letter-spacing: -0.005em;
+}
+
+.booking-page .booking__layout { display: grid; gap: var(--space-6); }
+.booking-page .booking__layout[hidden] { display: none; }
+
+@media (min-width: 1024px) {
+  .booking-page .booking { padding-top: var(--space-9); }
+  .booking-page .booking__intro { margin-bottom: var(--space-7); }
+  .booking-page .booking__layout {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: var(--space-7);
+    align-items: start;
+  }
+}
+
+/* ---------- 단계 (DESIGN.md 8-11) ---------- */
+.booking-page .booking-step {
+  min-width: 0;
+  margin: 0;
+  padding: 0 0 var(--space-6);
+  border: 0;
+  border-bottom: var(--border-width) solid var(--border-default);
+}
+/* fieldset의 padding-top은 legend 아래에 붙으므로 margin으로 간격을 준다 */
+.booking-page .booking-step + .booking-step { margin-top: var(--space-6); }
+.booking-page .booking-step:last-child { border-bottom: 0; }
+
+.booking-page .booking-step__head {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin-bottom: var(--space-5);
+}
+.booking-page .booking-step__count { font-style: normal; font-variant-numeric: tabular-nums; }
+.booking-page .booking-step__name {
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+/* ---------- 클래스 선택 카드 (DESIGN.md 8-5, 배경 없음 방식) ---------- */
+.booking-page .class-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--grid-gap);
+}
+@media (min-width: 768px) {
+  .booking-page .class-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.booking-page .class-option { display: block; cursor: pointer; }
+.booking-page .class-option__photo {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  background: var(--color-tan-100);
+}
+.booking-page .class-option__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-slow) var(--ease-out);
+}
+/* 캡션 대비용 그라데이션 + 선택 테두리 (DESIGN.md 6장) */
+.booking-page .class-option__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(to top, rgba(24, 20, 10, 0.55), transparent 50%);
+  transition: box-shadow var(--duration-fast) var(--ease-out);
+}
+.booking-page .class-option__caption {
+  position: absolute;
+  z-index: 1;
+  left: var(--space-4);
+  bottom: var(--space-4);
+  color: var(--color-white);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.booking-page .class-option__name {
+  display: block;
+  margin-top: var(--space-3);
+  font-size: var(--text-body);
+  font-weight: 600;
+}
+.booking-page .class-option:hover .class-option__name { text-decoration: underline; }
+@media (hover: hover) {
+  .booking-page .class-option:hover .class-option__photo img { transform: scale(1.03); }
+}
+.booking-page .class-option input:checked ~ .class-option__photo::after {
+  box-shadow: inset 0 0 0 3px var(--border-strong);
+}
+.booking-page .class-option input:checked ~ .class-option__name { text-decoration: underline; text-underline-offset: 4px; }
+.booking-page .class-option input:focus-visible ~ .class-option__photo {
+  outline: 2px solid var(--color-tan-600);
+  outline-offset: 2px;
+}
+
+/* ---------- 날짜 선택 (DESIGN.md 8-10) ---------- */
+.booking-page .calendar { max-width: 420px; margin-bottom: var(--space-5); }
+.booking-page .calendar__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+.booking-page .calendar__month {
+  margin: 0;
+  font-size: var(--text-body-lg);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.booking-page .calendar__nav { display: flex; gap: var(--space-2); }
+
+.booking-page .icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+.booking-page .icon-btn svg { width: 20px; height: 20px; }
+.booking-page .icon-btn:hover { background: var(--bg-subtle); }
+.booking-page .icon-btn:disabled { color: var(--text-disabled); cursor: not-allowed; background: transparent; }
+
+.booking-page .calendar__weekdays,
+.booking-page .calendar__days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(44px, 1fr));
+  gap: var(--space-1);
+}
+.booking-page .calendar__weekdays {
+  margin-bottom: var(--space-1);
+  color: var(--text-secondary);
+  font-size: var(--text-small);
+  text-align: center;
+}
+.booking-page .calendar__day {
+  height: 44px;
+  padding: 0;
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--text-primary);
+  font: 400 var(--text-body)/1 var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+.booking-page .calendar__day:hover:not(:disabled) { background: var(--bg-subtle); }
+.booking-page .calendar__day.is-today { border-color: var(--border-strong); }
+.booking-page .calendar__day[aria-pressed="true"] {
+  background: var(--bg-inverse);
+  color: var(--text-inverse);
+  font-weight: 600;
+}
+.booking-page .calendar__day:disabled { color: var(--text-disabled); opacity: 0.6; cursor: not-allowed; }
+
+/* ---------- 입력폼 (DESIGN.md 8-9) ---------- */
+.booking-page .field { margin-bottom: var(--space-5); }
+.booking-page .field__label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: var(--text-small);
+  font-weight: 600;
+}
+.booking-page .field__required { color: var(--text-accent); }
+.booking-page .field__input {
+  width: 100%;
+  height: 48px;
+  padding: 0 var(--space-4);
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font: 400 16px/1.5 var(--font-sans);
+}
+.booking-page .field__input--area { height: auto; padding: var(--space-3) var(--space-4); resize: vertical; }
+.booking-page .field__input::placeholder { color: var(--text-disabled); }
+.booking-page .field__input:focus {
+  outline: none;
+  border-color: var(--border-strong);
+  box-shadow: 0 0 0 3px rgba(134, 117, 92, 0.25);
+}
+.booking-page .field__input[aria-invalid="true"] { border-color: var(--color-error); }
+.booking-page .field__help {
+  margin: var(--space-1) 0 0;
+  color: var(--text-secondary);
+  font-size: var(--text-small);
+}
+.booking-page .field-error {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin: var(--space-2) 0 0;
+  color: var(--color-error);
+  font-size: var(--text-small);
+}
+.booking-page .field-error[hidden] { display: none; }
+/* 오류는 색 + 아이콘 + 문구 (DESIGN.md 11장) */
+.booking-page .field-error::before {
+  content: "!";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid currentColor;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* 칩 (DESIGN.md 8-7) */
+.booking-page .chip-list { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.booking-page .chip { cursor: pointer; }
+.booking-page .chip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-small);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  transition: background-color var(--duration-fast) var(--ease-out);
+}
+.booking-page .chip:hover span { background: var(--bg-subtle); }
+.booking-page .chip input:checked + span { background: var(--color-tan-200); border-color: var(--color-tan-600); }
+.booking-page .chip input:focus-visible + span { outline: 2px solid var(--color-tan-600); outline-offset: 2px; }
+
+/* 수량 조절 */
+.booking-page .counter {
+  display: inline-flex;
+  align-items: center;
+  height: 48px;
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+}
+.booking-page .counter__btn {
+  width: 48px;
+  height: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--text-primary);
+  font-size: 20px;
+  cursor: pointer;
+}
+.booking-page .counter__btn:disabled { color: var(--text-disabled); cursor: not-allowed; }
+.booking-page .counter__value {
+  min-width: 48px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+/* 체크박스 */
+.booking-page .check {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+  min-height: 44px;
+  font-size: var(--text-small);
+  cursor: pointer;
+}
+.booking-page .check input {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  margin: 2px 0 0;
+  accent-color: var(--color-ink-900);
+}
+
+/* ---------- 요약 ---------- */
+.booking-page .summary {
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-md);
+  background: var(--bg-surface);
+}
+@media (min-width: 1024px) {
+  .booking-page .summary { position: sticky; top: calc(var(--header-height) + var(--space-5)); }
+}
+.booking-page .summary__title {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.booking-page .summary__list { margin: 0 0 var(--space-5); }
+.booking-page .summary__list div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3) 0;
+  border-bottom: var(--border-width) solid var(--border-default);
+}
+.booking-page .summary__list dt { color: var(--text-secondary); }
+.booking-page .summary__list dd { margin: 0; font-weight: 600; font-variant-numeric: tabular-nums; text-align: right; }
+
+/* 안내 박스 (DESIGN.md 8-16) */
+.booking-page .notice {
+  margin-bottom: var(--space-5);
+  padding: var(--space-4) 20px;
+  border-left: 3px solid var(--color-tan-600);
+  border-radius: var(--radius-sm);
+  background: var(--bg-subtle);
+  font-size: var(--text-small);
+}
+
+.booking-page .booking__submit { width: 100%; }
+
+/* 모바일: 예약하기 버튼은 하단 고정 바 (DESIGN.md 8-1) */
+@media (max-width: 1023px) {
+  .booking-page .booking { padding-bottom: calc(var(--section-gap) + 88px); }
+  .booking-page .summary__action {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    padding: var(--space-4) var(--container-padding);
+    border-top: var(--border-width) solid var(--border-default);
+    background: var(--bg-surface);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+/* ---------- 완료 상태 (DESIGN.md 8-18) ---------- */
+.booking-page .booking-done {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: var(--space-8) 0;
+  text-align: center;
+}
+.booking-page .booking-done:focus { outline: none; }
+.booking-page .booking-done__icon { width: 32px; height: 32px; color: var(--color-success); }
+.booking-page .booking-done__title {
+  margin: var(--space-3) 0 var(--space-2);
+  font-size: var(--text-h3);
+  font-weight: 600;
+}
+.booking-page .booking-done__desc { margin: 0 0 var(--space-5); color: var(--text-secondary); }
