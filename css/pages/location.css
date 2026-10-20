@@ -1,0 +1,193 @@
+/* 오시는 길 페이지 전용 (DESIGN.md 8-4, 8-6, 8-8, 8-15, 8-16) */
+
+.location-page {
+  padding-top: var(--space-8);
+  padding-bottom: var(--section-gap);
+}
+
+/* 페이지 제목 */
+.location-page__overline {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  color: var(--text-accent);
+}
+
+.location-page__title {
+  margin: 0 0 var(--space-4);
+  font-size: var(--text-h1);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+.location-page__lead {
+  margin: 0;
+  max-width: 640px;
+  font-size: var(--text-body-lg);
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.location-page__map-section,
+.location-page__transit {
+  margin-top: var(--space-7);
+}
+
+/* 지도 블록: 위에 글자 없음, 마커만 */
+.location-map {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 4 / 3;
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-tan-100);
+  color: var(--color-ink-900);
+}
+
+@media (min-width: 768px) {
+  .location-map { aspect-ratio: 16 / 9; }
+}
+
+/* 주소 + 지도 버튼 */
+.location-address {
+  display: grid;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.location-address__label {
+  margin: 0 0 var(--space-2);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.4;
+  color: var(--text-accent);
+}
+
+.location-address__text {
+  margin: 0;
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.location-address__sub {
+  margin: var(--space-2) 0 0;
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+}
+
+.location-address__actions {
+  display: grid;
+  gap: var(--space-3);
+}
+
+/* Secondary 버튼 (common.css에 없어 페이지 범위에서 정의) */
+.location-btn--secondary {
+  background: transparent;
+  color: var(--text-primary);
+  box-shadow: inset 0 0 0 var(--border-width) var(--border-strong);
+}
+.location-btn--secondary:hover { background: var(--bg-subtle); }
+
+@media (min-width: 768px) {
+  .location-address {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+  }
+  .location-address__actions {
+    grid-auto-flow: column;
+    gap: var(--space-3);
+  }
+}
+
+/* 섹션 제목 */
+.location-section-head { margin-bottom: var(--space-6); }
+.location-section-head__title {
+  margin: 0;
+  font-size: var(--text-h2);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+@media (min-width: 1024px) {
+  .location-section-head { margin-bottom: var(--space-7); }
+}
+
+/* 정보 카드 그리드: 모바일 1열 / 태블릿 2열 / 데스크톱 3열 */
+.location-grid {
+  display: grid;
+  gap: var(--grid-gap);
+}
+@media (min-width: 768px) {
+  .location-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .location-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.info-card {
+  padding: var(--space-5);
+  background: var(--bg-surface);
+  border: var(--border-width) solid var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.info-card__icon {
+  display: block;
+  margin-bottom: var(--space-3);
+  color: var(--accent);
+}
+
+.info-card__title {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.info-card__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--text-body);
+  color: var(--text-secondary);
+}
+.info-card__list li + li { margin-top: var(--space-2); }
+
+/* 배지 (8-8 기본) */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  padding: 0 var(--space-2);
+  margin-right: var(--space-1);
+  border-radius: var(--radius-sm);
+  background: var(--bg-subtle);
+  color: var(--text-accent);
+  font-size: var(--text-caption);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+/* 안내 박스 (8-16) */
+.location-notice {
+  margin: var(--space-5) 0 0;
+  padding: var(--space-4) 20px;
+  background: var(--bg-subtle);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-sm);
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+}
