@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>클래스 예약 — 클래스로</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/pages/booking.css">
+  <script src="components/header/header.js" defer></script>
+  <script src="components/footer/footer.js" defer></script>
+  <script src="js/pages/booking.js" defer></script>
+</head>
+<body class="booking-page">
+  <site-header></site-header>
+
+  <main class="container booking">
+    <header class="booking__intro">
+      <p class="booking__overline">Booking</p>
+      <h1 class="booking__title">고르고, 정하고, 만나요.</h1>
+      <p class="booking__lead">동네 공방의 원데이 클래스를 골라 날짜와 인원을 정하면 예약 신청이 끝나요.</p>
+    </header>
+
+    <div class="booking__layout">
+      <form id="booking-form" class="booking-form" novalidate>
+        <!-- 01. 클래스 선택 -->
+        <fieldset class="booking-step" id="step-class">
+          <legend class="booking-step__head">
+            <span class="booking-step__count">01 / 03</span>
+            <span class="booking-step__name">클래스 선택</span>
+          </legend>
+
+          <div class="class-grid" role="radiogroup" aria-label="클래스 종류">
+            <label class="class-option">
+              <input type="radio" name="category" value="도자기" class="sr-only" required>
+              <span class="class-option__photo"><img src="assets/images/booking/pottery.webp" alt="물레 위에서 흙을 빚는 손" loading="lazy"><span class="class-option__caption">Pottery</span></span>
+              <span class="class-option__name">도자기</span>
+            </label>
+            <label class="class-option">
+              <input type="radio" name="category" value="베이킹" class="sr-only">
+              <span class="class-option__photo"><img src="assets/images/booking/baking.webp" alt="밀가루를 뿌린 나무판에서 반죽을 치대는 손" loading="lazy"><span class="class-option__caption">Baking</span></span>
+              <span class="class-option__name">베이킹</span>
+            </label>
+            <label class="class-option">
+              <input type="radio" name="category" value="가죽공예" class="sr-only">
+              <span class="class-option__photo"><img src="assets/images/booking/leather.webp" alt="갈색 가죽 벨트" loading="lazy"><span class="class-option__caption">Leather</span></span>
+              <span class="class-option__name">가죽공예</span>
+            </label>
+            <label class="class-option">
+              <input type="radio" name="category" value="플라워" class="sr-only">
+              <span class="class-option__photo"><img src="assets/images/booking/flower.webp" alt="어두운 배경 위에 놓인 꽃다발" loading="lazy"><span class="class-option__caption">Flower</span></span>
+              <span class="class-option__name">플라워</span>
+            </label>
+            <label class="class-option">
+              <input type="radio" name="category" value="드로잉" class="sr-only">
+              <span class="class-option__photo"><img src="assets/images/booking/drawing.webp" alt="점무늬 연필 묶음" loading="lazy"><span class="class-option__caption">Drawing</span></span>
+              <span class="class-option__name">드로잉</span>
+            </label>
+            <label class="class-option">
+              <input type="radio" name="category" value="향수" class="sr-only">
+              <span class="class-option__photo"><img src="assets/images/booking/perfume.webp" alt="분홍빛 향수병" loading="lazy"><span class="class-option__caption">Perfume</span></span>
+              <span class="class-option__name">향수</span>
+            </label>
+          </div>
+          <p class="field-error" id="category-error" hidden>클래스를 하나 골라 주세요.</p>
+        </fieldset>
+
+        <!-- 02. 날짜·인원 -->
+        <fieldset class="booking-step" id="step-date">
+          <legend class="booking-step__head">
+            <span class="booking-step__count">02 / 03</span>
+            <span class="booking-step__name">날짜·인원</span>
+          </legend>
+
+          <div class="calendar">
+            <div class="calendar__head">
+              <p class="calendar__month" id="calendar-month" aria-live="polite"></p>
+              <div class="calendar__nav">
+                <button type="button" class="icon-btn" id="prev-month" aria-label="이전 달">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+                </button>
+                <button type="button" class="icon-btn" id="next-month" aria-label="다음 달">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="calendar__weekdays" aria-hidden="true">
+              <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+            </div>
+            <div class="calendar__days" id="calendar-days" role="group" aria-label="날짜 선택"></div>
+          </div>
+          <p class="field-error" id="date-error" hidden>날짜를 골라 주세요.</p>
+
+          <div class="field">
+            <span class="field__label" id="time-label">시간 <span class="field__required">*</span></span>
+            <div class="chip-list" role="radiogroup" aria-labelledby="time-label">
+              <label class="chip"><input type="radio" name="time" value="10:00" class="sr-only" required><span>10:00</span></label>
+              <label class="chip"><input type="radio" name="time" value="14:00" class="sr-only"><span>14:00</span></label>
+              <label class="chip"><input type="radio" name="time" value="19:00" class="sr-only"><span>19:00</span></label>
+            </div>
+            <p class="field-error" id="time-error" hidden>시간을 골라 주세요.</p>
+          </div>
+
+          <div class="field">
+            <span class="field__label" id="people-label">인원</span>
+            <div class="counter" role="group" aria-labelledby="people-label">
+              <button type="button" class="counter__btn" data-step="-1" aria-label="인원 줄이기">−</button>
+              <output class="counter__value" id="people-value" aria-live="polite">1</output>
+              <button type="button" class="counter__btn" data-step="1" aria-label="인원 늘리기">+</button>
+            </div>
+            <input type="hidden" name="people" id="people" value="1">
+            <p class="field__help">한 번에 최대 8명까지 예약할 수 있어요.</p>
+          </div>
+        </fieldset>
+
+        <!-- 03. 예약자 정보 -->
+        <fieldset class="booking-step" id="step-info">
+          <legend class="booking-step__head">
+            <span class="booking-step__count">03 / 03</span>
+            <span class="booking-step__name">예약자 정보</span>
+          </legend>
+
+          <div class="field">
+            <label class="field__label" for="name">이름 <span class="field__required">*</span></label>
+            <input class="field__input" type="text" id="name" name="name" autocomplete="name" required>
+            <p class="field-error" id="name-error" hidden>이름을 입력해 주세요.</p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="phone">연락처 <span class="field__required">*</span></label>
+            <input class="field__input" type="tel" id="phone" name="phone" autocomplete="tel" inputmode="numeric" placeholder="010-0000-0000" pattern="01[0-9]-?[0-9]{3,4}-?[0-9]{4}" required aria-describedby="phone-help">
+            <p class="field__help" id="phone-help">예약 확인 문자를 보내 드려요.</p>
+            <p class="field-error" id="phone-error" hidden>연락처를 010-0000-0000 형식으로 입력해 주세요.</p>
+          </div>
+
+          <div class="field">
+            <label class="field__label" for="memo">요청 사항</label>
+            <textarea class="field__input field__input--area" id="memo" name="memo" rows="3"></textarea>
+          </div>
+
+          <label class="check">
+            <input type="checkbox" name="agree" id="agree" required>
+            <span>예약 안내를 위한 개인정보 수집·이용에 동의해요. <span class="field__required">*</span></span>
+          </label>
+          <p class="field-error" id="agree-error" hidden>개인정보 수집·이용에 동의해 주세요.</p>
+        </fieldset>
+      </form>
+
+      <aside class="summary" aria-labelledby="summary-title">
+        <h2 class="summary__title" id="summary-title">예약 내용</h2>
+        <dl class="summary__list">
+          <div><dt>클래스</dt><dd id="sum-category">선택 전</dd></div>
+          <div><dt>날짜</dt><dd id="sum-date">선택 전</dd></div>
+          <div><dt>시간</dt><dd id="sum-time">선택 전</dd></div>
+          <div><dt>인원</dt><dd id="sum-people">1명</dd></div>
+        </dl>
+        <div class="notice">결제는 클래스로 앱에서 진행돼요. 예약 신청 후 안내 문자를 확인해 주세요.</div>
+        <div class="summary__action">
+          <button type="submit" form="booking-form" class="btn btn--primary btn--lg booking__submit">예약하기</button>
+        </div>
+      </aside>
+    </div>
+
+    <section class="booking-done" id="booking-done" hidden tabindex="-1" aria-labelledby="done-title">
+      <svg class="booking-done__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+      <h2 class="booking-done__title" id="done-title">예약 신청이 완료됐어요.</h2>
+      <p class="booking-done__desc" id="done-desc"></p>
+      <a href="./index.html" class="btn btn--secondary">홈으로 가기</a>
+    </section>
+  </main>
+
+  <site-footer></site-footer>
+</body>
+</html>
