@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>자주 묻는 질문 — 클래스로</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="css/pages/qna.css">
+  <script src="components/header/header.js" defer></script>
+  <script src="components/footer/footer.js" defer></script>
+  <script src="js/pages/qna.js" defer></script>
+</head>
+<body>
+  <site-header></site-header>
+
+  <main class="container qna-page">
+    <div class="qna-intro">
+      <p class="qna-intro__overline">Q&amp;A</p>
+      <h1 class="qna-intro__title">자주 묻는 질문</h1>
+      <p class="qna-intro__lead">예약 전에 궁금한 것, 여기서 먼저 확인하세요</p>
+      <!-- 메일 주소는 임시 값. 팀에서 실제 주소가 정해지면 교체 -->
+      <p class="qna-intro__notice">그 밖의 질문은 회사 메일로 문의해 주세요. OOOO@OOO</p>
+    </div>
+
+    <!-- 질문 추가: .qna-item 하나를 복사하고 id 숫자(q·a)만 바꾸기 -->
+    <section class="qna-group" aria-labelledby="qna-group-service">
+      <h2 id="qna-group-service" class="qna-group__title">서비스</h2>
+      <div class="qna-list">
+        <div class="qna-item">
+          <h3 class="qna-item__heading">
+            <button type="button" class="qna-item__question" id="qna-q1" aria-expanded="false" aria-controls="qna-a1">
+              <span>클래스로는 어떤 서비스인가요?</span>
+              <svg class="qna-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </h3>
+          <div class="qna-item__answer" id="qna-a1" role="region" aria-labelledby="qna-q1" hidden>
+            <p>동네 공방·작업실의 원데이 클래스를 찾고, 바로 예약·결제하는 서비스예요.</p>
+          </div>
+        </div>
+
+        <div class="qna-item">
+          <h3 class="qna-item__heading">
+            <button type="button" class="qna-item__question" id="qna-q2" aria-expanded="false" aria-controls="qna-a2">
+              <span>어디에서 이용할 수 있나요?</span>
+              <svg class="qna-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </h3>
+          <div class="qna-item__answer" id="qna-a2" role="region" aria-labelledby="qna-q2" hidden>
+            <p>iOS·Android 앱과 모바일 웹에서 이용할 수 있어요.</p>
+          </div>
+        </div>
+
+        <div class="qna-item">
+          <h3 class="qna-item__heading">
+            <button type="button" class="qna-item__question" id="qna-q3" aria-expanded="false" aria-controls="qna-a3">
+              <span>어떤 클래스가 있나요?</span>
+              <svg class="qna-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </h3>
+          <div class="qna-item__answer" id="qna-a3" role="region" aria-labelledby="qna-q3" hidden>
+            <p>도자기, 베이킹, 가죽공예, 플라워, 드로잉, 향수 클래스가 있어요.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qna-group" aria-labelledby="qna-group-booking">
+      <h2 id="qna-group-booking" class="qna-group__title">예약·결제</h2>
+      <div class="qna-list">
+        <div class="qna-item">
+          <h3 class="qna-item__heading">
+            <button type="button" class="qna-item__question" id="qna-q4" aria-expanded="false" aria-controls="qna-a4">
+              <span>예약은 어떻게 하나요?</span>
+              <svg class="qna-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </h3>
+          <div class="qna-item__answer" id="qna-a4" role="region" aria-labelledby="qna-q4" hidden>
+            <p>클래스를 찾고 → 상세 정보를 확인하고 → 날짜·인원을 고른 뒤 → 결제하면 예약이 완료돼요.</p>
+          </div>
+        </div>
+
+        <div class="qna-item">
+          <h3 class="qna-item__heading">
+            <button type="button" class="qna-item__question" id="qna-q5" aria-expanded="false" aria-controls="qna-a5">
+              <span>결제는 어떻게 하나요?</span>
+              <svg class="qna-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </h3>
+          <div class="qna-item__answer" id="qna-a5" role="region" aria-labelledby="qna-q5" hidden>
+            <p>앱에서 바로 결제해요. 2026년 9월 업데이트(v2.3.0)부터 간편결제도 쓸 수 있어요.</p>
+          </div>
+        </div>
+
+        <div class="qna-item">
+          <h3 class="qna-item__heading">
+            <button type="button" class="qna-item__question" id="qna-q6" aria-expanded="false" aria-controls="qna-a6">
+              <span>클래스 가격은 얼마인가요?</span>
+              <svg class="qna-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </h3>
+          <div class="qna-item__answer" id="qna-a6" role="region" aria-labelledby="qna-q6" hidden>
+            <p>1인 평균 결제액은 42,000원이에요. 클래스별 가격은 클래스 상세에서 확인할 수 있어요.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="qna-group" aria-labelledby="qna-group-company">
+      <h2 id="qna-group-company" class="qna-group__title">공방·회사</h2>
+      <div class="qna-list">
+        <div class="qna-item">
+          <h3 class="qna-item__heading">
+            <button type="button" class="qna-item__question" id="qna-q7" aria-expanded="false" aria-controls="qna-a7">
+              <span>어느 지역 공방이 있나요?</span>
+              <svg class="qna-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </h3>
+          <div class="qna-item__answer" id="qna-a7" role="region" aria-labelledby="qna-q7" hidden>
+            <p>제휴 공방은 약 420곳이에요. 서울 280곳, 경기 110곳, 그 밖의 지역 30곳이에요.</p>
+          </div>
+        </div>
+
+        <div class="qna-item">
+          <h3 class="qna-item__heading">
+            <button type="button" class="qna-item__question" id="qna-q8" aria-expanded="false" aria-controls="qna-a8">
+              <span>클래스로는 어떤 회사인가요?</span>
+              <svg class="qna-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </h3>
+          <div class="qna-item__answer" id="qna-a8" role="region" aria-labelledby="qna-q8" hidden>
+            <p>2023년 3월에 설립됐어요. 대표는 한서윤이에요. 한 달에 약 7천 건의 예약이 이루어져요(2026년 9월 기준).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <site-footer></site-footer>
+</body>
+</html>
